@@ -1,13 +1,15 @@
 <script>
-  import { hash } from '../services/route.serv'
+  import { route, navigate } from '../services/route.serv';
   import Homepage from '../pages/Homepage.svelte';
   import Notfound from '../pages/Notfound.svelte';
 
+  const BASE_PATH = "/dashboard";
   let value = Notfound;
 
-  hash.subscribe( valu => {
-    switch(valu) {
-      case '':
+  route.subscribe(val => {
+    switch(val) {
+      case BASE_PATH + '/':
+      case BASE_PATH +  '/homepage':
         value = Homepage;
         break;
       default:
